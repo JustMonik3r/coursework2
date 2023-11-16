@@ -6,8 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
-public class JavaQuestionService implements QuestionService {
-
+public class MathQuestionService implements QuestionService {
     private final Set<Question> questions = new HashSet<>();
     @Override
     public Question add(String question, String answer) {
@@ -44,7 +43,7 @@ public class JavaQuestionService implements QuestionService {
     @Override
     public Question getRandomQuestion() {
         int index = new Random().nextInt(questions.size());
-        //List<Question> questionList = new ArrayList<>(questions);
-        return new ArrayList<>(questions).get(index);
+        List<Question> questionList = new ArrayList<>(questions);
+        return questionList.get(index);
     }
 }

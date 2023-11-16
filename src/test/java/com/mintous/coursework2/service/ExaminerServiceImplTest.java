@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
@@ -19,8 +20,7 @@ import static com.mintous.coursework2.service.TestUtils.*;
 
 @ExtendWith(MockitoExtension.class)
 class ExaminerServiceImplTest {
-    @Mock
-    private JavaQuestionService javaQuestionService;
+    JavaQuestionService javaQuestionService = Mockito.spy(JavaQuestionService.class);
 
     @InjectMocks
     private ExaminerServiceImpl examinerService;
@@ -36,7 +36,7 @@ class ExaminerServiceImplTest {
         Set<Question> expectedResult = new HashSet<>(examinerService.getQuestions(3));
 
         //Начало теста
-        Set<Question> actualResult = new HashSet<>(TestUtils.getAllQuestions());
+        Set<Question> actualResult = new HashSet<>(getAllQuestions());
         assertEquals(expectedResult.size(), 3);
         for (Question question : expectedResult) {
             assertTrue(actualResult.contains(question));
