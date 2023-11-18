@@ -1,10 +1,9 @@
 package com.mintous.coursework2.service;
 
+import com.mintous.coursework2.exceptions.NotEnoughQuestionsException;
 import com.mintous.coursework2.model.Question;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class TestUtils {
     public static final String FIRST_QUESTION = "first question";

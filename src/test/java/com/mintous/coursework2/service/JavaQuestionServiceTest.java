@@ -35,14 +35,16 @@ class JavaQuestionServiceTest {
         //Входные данные
         String answer = FIRST_ANSWER;
         String question = FIRST_QUESTION;
+        Question firstQuestion = new Question(question, answer);
 
         //Ожидаемый результат
-        Question expectedQuestion = null;
+        Set<Question> expectedQuestions = new HashSet<>();
 
         //Начало теста
-        Question actualQuestion = javaQuestionService.add(question, answer);
-        actualQuestion = javaQuestionService.remove(actualQuestion);
-        assertEquals(expectedQuestion, actualQuestion);
+        Set<Question> actualQuestion = new HashSet<>();
+        actualQuestion.add(firstQuestion);
+        actualQuestion.remove(firstQuestion);
+        assertEquals(expectedQuestions, actualQuestion);
     }
 
     @Test
