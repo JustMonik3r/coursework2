@@ -20,7 +20,8 @@ import static com.mintous.coursework2.service.TestUtils.*;
 
 @ExtendWith(MockitoExtension.class)
 class ExaminerServiceImplTest {
-    JavaQuestionService javaQuestionService = Mockito.spy(JavaQuestionService.class);
+    @Mock
+    private JavaQuestionService javaQuestionService;
 
     @InjectMocks
     private ExaminerServiceImpl examinerService;
@@ -30,7 +31,10 @@ class ExaminerServiceImplTest {
         //Входные данные
 
         when(javaQuestionService.getAll()).thenReturn(getAllQuestions());
-        when(javaQuestionService.getRandomQuestion()).thenCallRealMethod();
+        when(javaQuestionService.getRandomQuestion()).
+                thenReturn(getFirstQuestion()).
+                thenReturn(getSecondQuestion()).
+                thenReturn(getThirdQuestion());
 
         //Ожидаемый результат
         Set<Question> expectedResult = new HashSet<>(examinerService.getQuestions(3));
